@@ -20,13 +20,13 @@
 </template>
 
 <script>
-import RightPanel from "@/components/RightPanel";
-import { AppMain, Navbar, Settings, Sidebar, TagsView } from "./components";
-import ResizeMixin from "./mixin/ResizeHandler";
-import { mapState } from "vuex";
+import RightPanel from '@/components/RightPanel';
+import { AppMain, Navbar, Settings, Sidebar, TagsView } from './components';
+import ResizeMixin from './mixin/ResizeHandler';
+import { mapState } from 'vuex';
 
 export default {
-    name: "Layout",
+    name: 'Layout',
     components: {
         AppMain,
         Navbar,
@@ -49,13 +49,13 @@ export default {
                 hideSidebar: !this.sidebar.opened,
                 openSidebar: this.sidebar.opened,
                 withoutAnimation: this.sidebar.withoutAnimation,
-                mobile: this.device === "mobile"
+                mobile: this.device === 'mobile'
             };
         }
     },
     methods: {
         handleClickOutside() {
-            this.$store.dispatch("app/closeSideBar", {
+            this.$store.dispatch('app/closeSideBar', {
                 withoutAnimation: false
             });
         }

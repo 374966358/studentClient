@@ -25,15 +25,15 @@
 <script>
 // fuse is a lightweight fuzzy-search module
 // make search results more in line with expectations
-import Fuse from "fuse.js";
-import path from "path";
-import i18n from "@/lang";
+import Fuse from 'fuse.js';
+import path from 'path';
+import i18n from '@/lang';
 
 export default {
-    name: "HeaderSearch",
+    name: 'HeaderSearch',
     data() {
         return {
-            search: "",
+            search: '',
             options: [],
             searchPool: [],
             show: false,
@@ -60,9 +60,9 @@ export default {
         },
         show(value) {
             if (value) {
-                document.body.addEventListener("click", this.close);
+                document.body.addEventListener('click', this.close);
             } else {
-                document.body.removeEventListener("click", this.close);
+                document.body.removeEventListener('click', this.close);
             }
         }
     },
@@ -85,7 +85,7 @@ export default {
         },
         change(val) {
             this.$router.push(val.path);
-            this.search = "";
+            this.search = '';
             this.options = [];
             this.$nextTick(() => {
                 this.show = false;
@@ -101,11 +101,11 @@ export default {
                 minMatchCharLength: 1,
                 keys: [
                     {
-                        name: "title",
+                        name: 'title',
                         weight: 0.7
                     },
                     {
-                        name: "path",
+                        name: 'path',
                         weight: 0.3
                     }
                 ]
@@ -113,7 +113,7 @@ export default {
         },
         // Filter out the routes that can be displayed in the sidebar
         // And generate the internationalized title
-        generateRoutes(routes, basePath = "/", prefixTitle = []) {
+        generateRoutes(routes, basePath = '/', prefixTitle = []) {
             let res = [];
 
             for (const router of routes) {
@@ -133,7 +133,7 @@ export default {
 
                     data.title = [...data.title, i18ntitle];
 
-                    if (router.redirect !== "noRedirect") {
+                    if (router.redirect !== 'noRedirect') {
                         // only push the routes with title
                         // special case: need to exclude parent router without redirect
                         res.push(data);
@@ -155,7 +155,7 @@ export default {
             return res;
         },
         querySearch(query) {
-            if (query !== "") {
+            if (query !== '') {
                 this.options = this.fuse.search(query);
             } else {
                 this.options = [];

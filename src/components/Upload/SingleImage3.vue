@@ -17,7 +17,7 @@
         </el-upload>
         <div class="image-preview image-app-preview">
             <div v-show="imageUrl.length>1" class="image-preview-wrapper">
-                <img :src="imageUrl" />
+                <img :src="imageUrl" >
                 <div class="image-preview-action">
                     <i class="el-icon-delete" @click="rmImage" />
                 </div>
@@ -25,7 +25,7 @@
         </div>
         <div class="image-preview">
             <div v-show="imageUrl.length>1" class="image-preview-wrapper">
-                <img :src="imageUrl" />
+                <img :src="imageUrl" >
                 <div class="image-preview-action">
                     <i class="el-icon-delete" @click="rmImage" />
                 </div>
@@ -35,20 +35,20 @@
 </template>
 
 <script>
-import { getToken } from "@/api/qiniu";
+import { getToken } from '@/api/qiniu';
 
 export default {
-    name: "SingleImageUpload3",
+    name: 'SingleImageUpload3',
     props: {
         value: {
             type: String,
-            default: ""
+            default: ''
         }
     },
     data() {
         return {
-            tempUrl: "",
-            dataObj: { token: "", key: "" }
+            tempUrl: '',
+            dataObj: { token: '', key: '' }
         };
     },
     computed: {
@@ -58,10 +58,10 @@ export default {
     },
     methods: {
         rmImage() {
-            this.emitInput("");
+            this.emitInput('');
         },
         emitInput(val) {
-            this.$emit("input", val);
+            this.$emit('input', val);
         },
         handleImageSuccess(file) {
             this.emitInput(file.files.file);

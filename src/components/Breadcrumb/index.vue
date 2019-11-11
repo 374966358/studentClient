@@ -13,8 +13,8 @@
 </template>
 
 <script>
-import { generateTitle } from "@/utils/i18n";
-import pathToRegexp from "path-to-regexp";
+import { generateTitle } from '@/utils/i18n';
+import pathToRegexp from 'path-to-regexp';
 
 export default {
     data() {
@@ -25,7 +25,7 @@ export default {
     watch: {
         $route(route) {
             // if you go to the redirect page, do not update the breadcrumbs
-            if (route.path.startsWith("/redirect/")) {
+            if (route.path.startsWith('/redirect/')) {
                 return;
             }
             this.getBreadcrumb();
@@ -45,7 +45,7 @@ export default {
 
             if (!this.isDashboard(first)) {
                 matched = [
-                    { path: "/dashboard", meta: { title: "dashboard" } }
+                    { path: '/dashboard', meta: { title: 'dashboard' }}
                 ].concat(matched);
             }
 
@@ -63,7 +63,7 @@ export default {
             }
             return (
                 name.trim().toLocaleLowerCase() ===
-                "Dashboard".toLocaleLowerCase()
+                'Dashboard'.toLocaleLowerCase()
             );
         },
         pathCompile(path) {

@@ -12,32 +12,32 @@
  * docs:
  * https://panjiachen.github.io/vue-element-admin-site/feature/component/rich-editor.html#tinymce
  */
-import editorImage from "./components/EditorImage";
-import plugins from "./plugins";
-import toolbar from "./toolbar";
-import load from "./dynamicLoadScript";
+import editorImage from './components/EditorImage';
+import plugins from './plugins';
+import toolbar from './toolbar';
+import load from './dynamicLoadScript';
 
 // why use this cdn, detail see https://github.com/PanJiaChen/tinymce-all-in-one
 const tinymceCDN =
-    "https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js";
+    'https://cdn.jsdelivr.net/npm/tinymce-all-in-one@4.9.3/tinymce.min.js';
 
 export default {
-    name: "Tinymce",
+    name: 'Tinymce',
     components: { editorImage },
     props: {
         id: {
             type: String,
             default: function() {
                 return (
-                    "vue-tinymce-" +
+                    'vue-tinymce-' +
                     +new Date() +
-                    ((Math.random() * 1000).toFixed(0) + "")
+                    ((Math.random() * 1000).toFixed(0) + '')
                 );
             }
         },
         value: {
             type: String,
-            default: ""
+            default: ''
         },
         toolbar: {
             type: Array,
@@ -48,7 +48,7 @@ export default {
         },
         menubar: {
             type: String,
-            default: "file edit insert view format table"
+            default: 'file edit insert view format table'
         },
         height: {
             type: [Number, String],
@@ -58,7 +58,7 @@ export default {
         width: {
             type: [Number, String],
             required: false,
-            default: "auto"
+            default: 'auto'
         }
     },
     data() {
@@ -68,10 +68,10 @@ export default {
             tinymceId: this.id,
             fullscreen: false,
             languageTypeList: {
-                en: "en",
-                zh: "zh_CN",
-                es: "es_MX",
-                ja: "ja"
+                en: 'en',
+                zh: 'zh_CN',
+                es: 'es_MX',
+                ja: 'ja'
             }
         };
     },
@@ -92,7 +92,7 @@ export default {
         value(val) {
             if (!this.hasChange && this.hasInit) {
                 this.$nextTick(() =>
-                    window.tinymce.get(this.tinymceId).setContent(val || "")
+                    window.tinymce.get(this.tinymceId).setContent(val || '')
                 );
             }
         },
@@ -132,19 +132,19 @@ export default {
                 language: this.language,
                 selector: `#${this.tinymceId}`,
                 height: this.height,
-                body_class: "panel-body ",
+                body_class: 'panel-body ',
                 object_resizing: false,
                 toolbar: this.toolbar.length > 0 ? this.toolbar : toolbar,
                 menubar: this.menubar,
                 plugins: plugins,
                 end_container_on_empty_block: true,
-                powerpaste_word_import: "clean",
+                powerpaste_word_import: 'clean',
                 code_dialog_height: 450,
                 code_dialog_width: 1000,
-                advlist_bullet_styles: "square",
-                advlist_number_styles: "default",
-                imagetools_cors_hosts: ["www.tinymce.com", "codepen.io"],
-                default_link_target: "_blank",
+                advlist_bullet_styles: 'square',
+                advlist_number_styles: 'default',
+                imagetools_cors_hosts: ['www.tinymce.com', 'codepen.io'],
+                default_link_target: '_blank',
                 link_title: false,
                 nonbreaking_force_tab: true, // inserting nonbreaking space &nbsp; need Nonbreaking Space Plugin
                 init_instance_callback: editor => {
@@ -152,13 +152,13 @@ export default {
                         editor.setContent(_this.value);
                     }
                     _this.hasInit = true;
-                    editor.on("NodeChange Change KeyUp SetContent", () => {
+                    editor.on('NodeChange Change KeyUp SetContent', () => {
                         this.hasChange = true;
-                        this.$emit("input", editor.getContent());
+                        this.$emit('input', editor.getContent());
                     });
                 },
                 setup(editor) {
-                    editor.on("FullscreenStateChanged", e => {
+                    editor.on('FullscreenStateChanged', e => {
                         _this.fullscreen = e.state;
                     });
                 }
@@ -200,7 +200,7 @@ export default {
         destroyTinymce() {
             const tinymce = window.tinymce.get(this.tinymceId);
             if (this.fullscreen) {
-                tinymce.execCommand("mceFullScreen");
+                tinymce.execCommand('mceFullScreen');
             }
 
             if (tinymce) {

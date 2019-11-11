@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import ThemePicker from "@/components/ThemePicker";
+import ThemePicker from '@/components/ThemePicker';
 
 export default {
     components: { ThemePicker },
@@ -47,15 +47,15 @@ export default {
     },
     computed: {
         isShowJob() {
-            return this.$store.getters.language === "zh";
+            return this.$store.getters.language === 'zh';
         },
         fixedHeader: {
             get() {
                 return this.$store.state.settings.fixedHeader;
             },
             set(val) {
-                this.$store.dispatch("settings/changeSetting", {
-                    key: "fixedHeader",
+                this.$store.dispatch('settings/changeSetting', {
+                    key: 'fixedHeader',
                     value: val
                 });
             }
@@ -65,8 +65,8 @@ export default {
                 return this.$store.state.settings.tagsView;
             },
             set(val) {
-                this.$store.dispatch("settings/changeSetting", {
-                    key: "tagsView",
+                this.$store.dispatch('settings/changeSetting', {
+                    key: 'tagsView',
                     value: val
                 });
             }
@@ -76,8 +76,8 @@ export default {
                 return this.$store.state.settings.sidebarLogo;
             },
             set(val) {
-                this.$store.dispatch("settings/changeSetting", {
-                    key: "sidebarLogo",
+                this.$store.dispatch('settings/changeSetting', {
+                    key: 'sidebarLogo',
                     value: val
                 });
             }
@@ -85,8 +85,8 @@ export default {
     },
     methods: {
         themeChange(val) {
-            this.$store.dispatch("settings/changeSetting", {
-                key: "theme",
+            this.$store.dispatch('settings/changeSetting', {
+                key: 'theme',
                 value: val
             });
         }

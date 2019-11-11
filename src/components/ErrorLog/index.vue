@@ -27,12 +27,12 @@
                             <span class="message-title">Msg:</span>
                             <el-tag type="danger">{{ row.err.message }}</el-tag>
                         </div>
-                        <br />
+                        <br >
                         <div>
                             <span class="message-title" style="padding-right: 10px;">Info:</span>
                             <el-tag type="warning">{{ row.vm.$vnode.tag }} error in {{ row.info }}</el-tag>
                         </div>
-                        <br />
+                        <br >
                         <div>
                             <span class="message-title" style="padding-right: 16px;">Url:</span>
                             <el-tag type="success">{{ row.url }}</el-tag>
@@ -49,7 +49,7 @@
 
 <script>
 export default {
-    name: "ErrorLog",
+    name: 'ErrorLog',
     data() {
         return {
             dialogTableVisible: false
@@ -63,7 +63,7 @@ export default {
     methods: {
         clearAll() {
             this.dialogTableVisible = false;
-            this.$store.dispatch("errorLog/clearErrorLog");
+            this.$store.dispatch('errorLog/clearErrorLog');
         }
     }
 };

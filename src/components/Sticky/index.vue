@@ -13,7 +13,7 @@
 
 <script>
 export default {
-    name: "Sticky",
+    name: 'Sticky',
     props: {
         stickyTop: {
             type: Number,
@@ -25,13 +25,13 @@ export default {
         },
         className: {
             type: String,
-            default: ""
+            default: ''
         }
     },
     data() {
         return {
             active: false,
-            position: "",
+            position: '',
             width: undefined,
             height: undefined,
             isSticky: false
@@ -39,24 +39,24 @@ export default {
     },
     mounted() {
         this.height = this.$el.getBoundingClientRect().height;
-        window.addEventListener("scroll", this.handleScroll);
-        window.addEventListener("resize", this.handleResize);
+        window.addEventListener('scroll', this.handleScroll);
+        window.addEventListener('resize', this.handleResize);
     },
     activated() {
         this.handleScroll();
     },
     destroyed() {
-        window.removeEventListener("scroll", this.handleScroll);
-        window.removeEventListener("resize", this.handleResize);
+        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('resize', this.handleResize);
     },
     methods: {
         sticky() {
             if (this.active) {
                 return;
             }
-            this.position = "fixed";
+            this.position = 'fixed';
             this.active = true;
-            this.width = this.width + "px";
+            this.width = this.width + 'px';
             this.isSticky = true;
         },
         handleReset() {
@@ -66,14 +66,14 @@ export default {
             this.reset();
         },
         reset() {
-            this.position = "";
-            this.width = "auto";
+            this.position = '';
+            this.width = 'auto';
             this.active = false;
             this.isSticky = false;
         },
         handleScroll() {
             const width = this.$el.getBoundingClientRect().width;
-            this.width = width || "auto";
+            this.width = width || 'auto';
             const offsetTop = this.$el.getBoundingClientRect().top;
             if (offsetTop < this.stickyTop) {
                 this.sticky();
@@ -83,7 +83,7 @@ export default {
         },
         handleResize() {
             if (this.isSticky) {
-                this.width = this.$el.getBoundingClientRect().width + "px";
+                this.width = this.$el.getBoundingClientRect().width + 'px';
             }
         }
     }

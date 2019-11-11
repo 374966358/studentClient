@@ -26,7 +26,7 @@
 
             <el-dropdown class="avatar-container right-menu-item hover-effect" trigger="click">
                 <div class="avatar-wrapper">
-                    <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar" />
+                    <img :src="avatar+'?imageView2/1/w/80/h/80'" class="user-avatar" >
                     <i class="el-icon-caret-bottom" />
                 </div>
                 <el-dropdown-menu slot="dropdown">
@@ -55,14 +55,14 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import Breadcrumb from "@/components/Breadcrumb";
-import Hamburger from "@/components/Hamburger";
-import ErrorLog from "@/components/ErrorLog";
-import Screenfull from "@/components/Screenfull";
-import SizeSelect from "@/components/SizeSelect";
-import LangSelect from "@/components/LangSelect";
-import Search from "@/components/HeaderSearch";
+import { mapGetters } from 'vuex';
+import Breadcrumb from '@/components/Breadcrumb';
+import Hamburger from '@/components/Hamburger';
+import ErrorLog from '@/components/ErrorLog';
+import Screenfull from '@/components/Screenfull';
+import SizeSelect from '@/components/SizeSelect';
+import LangSelect from '@/components/LangSelect';
+import Search from '@/components/HeaderSearch';
 
 export default {
     components: {
@@ -75,14 +75,14 @@ export default {
         Search
     },
     computed: {
-        ...mapGetters(["sidebar", "avatar", "device"])
+        ...mapGetters(['sidebar', 'avatar', 'device'])
     },
     methods: {
         toggleSideBar() {
-            this.$store.dispatch("app/toggleSideBar");
+            this.$store.dispatch('app/toggleSideBar');
         },
         async logout() {
-            await this.$store.dispatch("user/logout");
+            await this.$store.dispatch('user/logout');
             this.$router.push(`/login?redirect=${this.$route.fullPath}`);
         }
     }

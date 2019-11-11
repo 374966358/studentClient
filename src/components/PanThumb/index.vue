@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    name: "PanThumb",
+    name: 'PanThumb',
     props: {
         image: {
             type: String,
@@ -24,11 +24,11 @@ export default {
         },
         width: {
             type: String,
-            default: "150px"
+            default: '150px'
         },
         height: {
             type: String,
-            default: "150px"
+            default: '150px'
         }
     }
 };

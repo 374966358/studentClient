@@ -25,6 +25,14 @@ module.exports = {
         "vue/multiline-html-element-content-newline": "off",
         "vue/name-property-casing": ["error", "PascalCase"],
         "vue/no-v-html": "off",
+        "vue/html-indent": [2, 4, {
+            'SwitchCase': 1
+        }],
+        "vue/html-closing-bracket-spacing": ["error", {
+            "startTag": "always" | "never",
+            "endTag": "always" | "never",
+            "selfClosingTag": "always" | "never"
+        }],
         'accessor-pairs': 2,
         'arrow-spacing': [2, {
             'before': true,
@@ -53,7 +61,7 @@ module.exports = {
             'after': true
         }],
         'handle-callback-err': [2, '^(err|error)$'],
-        'indent': [4, 4, {
+        'indent': [2, 4, {
             'SwitchCase': 1
         }],
         'jsx-quotes': [2, 'prefer-single'],
@@ -166,7 +174,7 @@ module.exports = {
             'avoidEscape': true,
             'allowTemplateLiterals': true
         }],
-        'semi': [2, 'never'],
+        'semi': [2, 'always'],
         'semi-spacing': [2, {
             'before': false,
             'after': true
