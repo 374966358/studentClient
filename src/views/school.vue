@@ -1,28 +1,78 @@
 <template>
-  <center>
-    <h2>初一 上学期 数学 三班 第5节课时上课时间：2019年11月12日13:30</h2>
-    <h2>距离上课时间还有 3小时21分钟</h2>
-    <iframe src="https://view.officeapps.live.com/op/view.aspx?src=http%3a%2f%2fm.yuemore.com%2fxsdjy191112.pptx" width="100%" height="500px" frameborder="1" />
-    <button class="pan-btn tiffany-btn">进入教室</button>
-  </center>
+  <div>
+    <div style="margin:10px 0">
+      <el-button type="primary" @click="keepLiveVideo">开始直播</el-button>
+      <el-button type="primary" @click="stopLiveVideo">停止直播</el-button>
+    </div>
+    <video ref="videoElement" controls autoplay width="100%" height="450px" poster="http://pic34.nipic.com/20131030/2455348_194508648000_2.jpg" @pause="handlePause" @play="handlePlay">Your browser is too old which doesn't support HTML5 video.</video>
+  </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import flvjs from 'flv.js'
 
 export default {
-  name: 'Dashboard',
-  data() {
-    return {
-      currentRole: 'adminDashboard'
+  name: 'School',
+  props: {
+    types: {
+      type: String,
+      default: 'flv'
+    },
+    url: {
+      types: String,
+      default: 'http://39.106.160.150:1936/live/123456.flv'
     }
   },
-  computed: {
-    ...mapGetters([
-      'roles'
-    ])
+  data() {
+    return {
+      flvPlayer: null
+    }
   },
-  created() {
+  watch: {
+    url() {
+      if (this.flvPlayer) {
+        this.flvPlayer.destroy()
+      }
+      this.createVideo()
+    }
+  },
+  mounted() {
+  },
+  methods: {
+    keepLiveVideo() {
+      if (this.flvPlayer == null) {
+        const videoElement = this.$refs.videoElement
+        this.flvPlayer = flvjs.createPlayer({
+          type: this.types,
+          url: this.url
+        })
+        this.flvPlayer.attachMediaElement(videoElement)
+        this.flvPlayer.load()
+      }
+    },
+    stopLiveVideo() {
+      if (this.flvPlayer) {
+        this.flvPlayer.destroy()
+        this.flvPlayer = null
+      }
+    },
+    handlePause() {
+      // if (this.flvPlayer) {
+      //     this.flvPlayer.destroy()
+      //     this.flvPlayer = null
+      // }
+    },
+    handlePlay() {
+      if (this.flvPlayer == null) {
+        const videoElement = this.$refs.videoElement
+        this.flvPlayer = flvjs.createPlayer({
+          type: this.types,
+          url: this.url
+        })
+        this.flvPlayer.attachMediaElement(videoElement)
+        this.flvPlayer.load()
+      }
+    }
   }
 }
 </script>
