@@ -19,7 +19,7 @@ export default {
       default: 'flv'
     },
     url: {
-      types: String,
+      type: String,
       default: 'http://39.106.160.150:1936/live/123456.flv'
     }
   },
