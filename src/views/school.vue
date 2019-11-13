@@ -3,8 +3,11 @@
     <div style="margin:10px 0">
       <el-button type="primary" @click="keepLiveVideo">开始直播</el-button>
       <el-button type="primary" @click="stopLiveVideo">停止直播</el-button>
+      <el-button type="primary" @click="toHome">
+        返回首页
+      </el-button>
     </div>
-    <video ref="videoElement" controls autoplay width="100%" height="450px" poster="http://pic34.nipic.com/20131030/2455348_194508648000_2.jpg" @pause="handlePause" @play="handlePlay">Your browser is too old which doesn't support HTML5 video.</video>
+    <video ref="videoElement" controls autoplay width="100%" height="450px" poster="" @pause="handlePause" @play="handlePlay">Your browser is too old which doesn't support HTML5 video.</video>
   </div>
 </template>
 
@@ -72,6 +75,9 @@ export default {
         this.flvPlayer.attachMediaElement(videoElement)
         this.flvPlayer.load()
       }
+    },
+    toHome() {
+      this.$router.push('/')
     }
   }
 }

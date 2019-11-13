@@ -103,7 +103,10 @@ export const constantRoutes = [
     path: '/school',
     component: () => import('@/views/school.vue'),
     hidden: true
-  },
+  }
+]
+
+export const asyncRoutes = [
   // 我的班级
   {
     path: '/grading',
@@ -219,7 +222,7 @@ export const constantRoutes = [
 ]
 
 const createRouter = () => new Router({
-  mode: 'history', // require service support
+  // mode: 'history', // require service support
   scrollBehavior: () => ({ y: 0 }),
   routes: constantRoutes
 })
